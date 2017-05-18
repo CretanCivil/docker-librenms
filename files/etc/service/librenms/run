@@ -1,4 +1,6 @@
 #!/bin/bash -eu
 
+
 cd /opt/librenms
+git pull
 exec php /opt/librenms/poller.php -l -h all
