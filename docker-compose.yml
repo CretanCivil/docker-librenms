@@ -2,19 +2,19 @@ version: '2'
 
 services:
   web:
-    image: jarischaefer/docker-librenms
+    image: leapar/librenms:1.27
     ports:
       - "80:80"
     volumes:
-      - /my/persistent/directory/logs:/opt/librenms/logs \
-      - /my/persistent/directory/rrd:/opt/librenms/rrd \
+      - ./directory/logs:/opt/librenms/logs \
+      - ./directory/rrd:/opt/librenms/rrd \
     environment:
       - DB_HOST=db
       - DB_NAME=librenms
       - DB_USER=librenms
-      - DB_PASS=secret
+      - DB_PASS=wangwang
       - POLLERS=16
-      - BASE_URL=http://localhost
+      - BASE_URL=http://localhost:9080
     links:
       - mysql:db
   mysql:
@@ -23,6 +23,6 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - /my/persistent/directory/mysql:/var/lib/mysql
+      - /directory/mysql:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=wangwang

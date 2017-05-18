@@ -13,6 +13,6 @@ docker run \
 Now you need to create a user and the database (replace supersecret with your root password and secret with the password you will use within your librenms container):
 
 ```bash
-mysql --host=127.0.0.1 --user=root -psecret -e "create database librenms;"
+mysql --host=127.0.0.1 --user=root -psecret -e "CREATE DATABASE librenms CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
 mysql --host=127.0.0.1 --user=root -psecret -e "GRANT ALL PRIVILEGES ON librenms.* TO 'librenms'@'%' IDENTIFIED BY 'secret';"
 ```

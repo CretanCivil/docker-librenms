@@ -1,5 +1,5 @@
 FROM phusion/baseimage:0.9.21
-MAINTAINER Jari Schäfer <jari.schaefer@gmail.com>
+MAINTAINER leapar <leapar@gmail.com>
 
 EXPOSE 80 443
 
@@ -21,6 +21,9 @@ RUN	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C C300EE8C &
 		php7.0-opcache \
 		php7.0-ldap \
 		php7.0-memcached \
+		php7.0-snmp \
+		php7.0-mcrypt \
+		php7.0-json \
 		php-imagick \
 		php-pear \
 		php-net-ipv4 \
@@ -47,7 +50,7 @@ RUN	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C C300EE8C &
 	sed -i 's/;clear_env/clear_env/g' /etc/php/7.0/fpm/pool.d/www.conf && \
 	useradd librenms -d /opt/librenms -M -r && \
 	usermod -a -G librenms www-data && \
-	curl -ssL "https://github.com/librenms/librenms/archive/1.27.tar.gz" | tar xz -C /opt && \
+	git clone "https://github.com/whpv/librenms.git" /opt/librenms-1.27 && \
 	mv /opt/librenms-1.27 /opt/librenms && \
 	chown -R librenms:librenms /opt/librenms && \
 	apt-get -yq autoremove --purge && \
