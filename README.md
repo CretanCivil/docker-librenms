@@ -1,7 +1,13 @@
 #启动方式
 
-1. docker build -t leapar/librenms:1.27 .
-2. docker up -d
+1. 编译基础镜像
+ ```bash
+docker build -t leapar/librenms:1.27 .
+```
+2. 启动镜像
+ ```bash
+ docker up -d
+ ```
 3. 查看librenms mysql_id
 ```bash
 docker ps
