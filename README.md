@@ -1,3 +1,24 @@
+#启动方式
+
+1. docker build -t leapar/librenms:1.27 .
+2. docker up -d
+3. 查看librenms mysql_id
+```bash
+docker ps
+``` 
+4. 创建数据库
+ ```bash
+docker exec -it mysql_id /bin/bash
+mysql --host=127.0.0.1 --user=root -psecret -e "CREATE DATABASE librenms CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+mysql --host=127.0.0.1 --user=root -psecret -e "GRANT ALL PRIVILEGES ON librenms.* TO 'librenms'@'%' IDENTIFIED BY 'secret';"
+```
+5. 查看librenms webcontainer_id
+```bash
+docker exec -it webcontainer_id /bin/bash
+cd /opt/librenms && php /opt/librenms/build-base.php
+php /opt/librenms/adduser.php admin admin 10 test@example.com
+```
+
 # docker-librenms
 Docker image for LibreNMS
 
