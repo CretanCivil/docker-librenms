@@ -56,6 +56,6 @@ $g_metric_data = [];
 $config['snmp']['v2c']['community']['172.29.201.1'] = 'h3c';
 $config['snmp']['v2c']['community']['172.29.226.1'] = 'Purvar123';
 
-$config['agent']['host'] = 'http://172.29.231.177:8000/snmp/v1/';
+$config['agent']['host'] = 'http://172.29.231.177:10000/snmp/v1/';
 $config['agent']['key'] = 'e7afaf986f5cc822406cbd5831328462';
 
