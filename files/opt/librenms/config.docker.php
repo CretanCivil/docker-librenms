@@ -48,13 +48,17 @@ $config['nets'][] = "172.29.231.0/24";
 $config['nets'][] = "172.29.228.0/24";
 $config['nets'][] = "172.29.226.0/24";
 $config['nets'][] = "172.29.201.0/24";
+$config['nets'][] = "172.29.230.0/24";
 
 
 $g_metric_data = [];
+$g_metric_service = [];
+$g_metric_check = [];
 
 
 $config['snmp']['v2c']['community']['172.29.201.1'] = 'h3c';
 $config['snmp']['v2c']['community']['172.29.226.1'] = 'Purvar123';
+$config['snmp']['v2c']['community']['172.29.230.46'] = 'Purvar123';
 
 $config['agent']['host'] = 'http://172.29.231.177:10000/snmp/v1/';
 $config['agent']['key'] = 'e7afaf986f5cc822406cbd5831328462';
