@@ -62,4 +62,5 @@ $config['snmp']['v2c']['community']['172.29.230.46'] = 'Purvar123';
 
 $config['agent']['host'] = 'http://172.29.231.177:10000/snmp/v1/';
 $config['agent']['key'] = 'e7afaf986f5cc822406cbd5831328462';
+$config['agent_host'] = 'snmp1';
 
