@@ -1,0 +1,6 @@
+33	*/6	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/discovery.php -h all >> /dev/null 2>&1
+*/5	*	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/discovery-wrapper.php PLACEHOLDER_DISCOVERYS >> /dev/null 2>&1
+*/10	*	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/snmp-scan.php
+*   *   *   *   *   librenms    .  /etc/librenms_environment; /opt/librenms/poller-wrapper.py PLACEHOLDER_POLLERS
+*   *   *   *   *   librenms    .  sleep 20; /etc/librenms_environment; /opt/librenms/poller-wrapper.py PLACEHOLDER_POLLERS
+*   *   *   *   *   librenms    .  sleep 40; /etc/librenms_environment; /opt/librenms/poller-wrapper.py PLACEHOLDER_POLLERS

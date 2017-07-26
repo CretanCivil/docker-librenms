@@ -1,0 +1,23 @@
+#!/bin/bash
+# wait-for-mysql.sh
+
+set -e
+
+until mysql -h$DB_HOST -P3306 -u$DB_USER -p$DB_PASS -e 'show databases;'; do
+  >&2 echo "Database is unavailable - sleeping"
+  sleep 5
+done
+
+until mysql -h$DB_HOST -D$DB_NAME -P3306 -u$DB_USER -p$DB_PASS -e 'select count(*) from devices;'; do
+  php /opt/librenms/build-base.php
+  php /opt/librenms/adduser.php admin admin 10 test@example.com
+  >&2 echo "no devices"
+  sleep 5
+done
+
+>&2 echo "Database is up - executing command"
+
+cd /opt/librenms
+git pull
+
+php /opt/librenms/snmp-scan.php

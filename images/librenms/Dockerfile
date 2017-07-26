@@ -12,6 +12,8 @@ RUN	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C C300EE8C &
 	apt-get -yq dist-upgrade && \
 	apt-get -yq install --no-install-recommends \
 		dnsutils \
+		netcat \
+		mysql-client \
 		nginx \
 		php7.0-cli \
 		php7.0-fpm \
@@ -50,7 +52,7 @@ RUN	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C C300EE8C &
 	sed -i 's/;clear_env/clear_env/g' /etc/php/7.0/fpm/pool.d/www.conf && \
 	useradd librenms -d /opt/librenms -M -r && \
 	usermod -a -G librenms www-data && \
-	git clone "https://github.com/whpv/librenms.git" /opt/librenms-1.27 && \
+	git clone "https://github.com/CretanCivil/librenms.git" /opt/librenms-1.27 && \
 	mv /opt/librenms-1.27 /opt/librenms && \
 	chown -R librenms:librenms /opt/librenms && \
 	apt-get -yq autoremove --purge && \
@@ -59,6 +61,7 @@ RUN	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E5267A6C C300EE8C &
 
 ADD files /
 RUN	chmod -R +x /etc/my_init.d /etc/service && \
-	chmod 644 /etc/cron.d/librenms
+	chmod 644 /etc/cron.d/librenms 
+	 
 
 VOLUME ["/opt/librenms/logs", "/opt/librenms/rrd", "/etc/nginx/ssl", "/var/log/nginx"]

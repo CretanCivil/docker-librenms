@@ -1,9 +1,0 @@
-33	*/6	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/discovery.php -h all >> /dev/null 2>&1
-*/5	*	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/discovery.php -h new >> /dev/null 2>&1
-*/5	*	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/cronic /opt/librenms/poller-wrapper.py 16
-15	0	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/daily.sh >> /dev/null 2>&1
-*	*	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/alerts.php >> /dev/null 2>&1
-*/5	*	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/poll-billing.php >> /dev/null 2>&1
-01	*	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/billing-calculate.php >> /dev/null 2>&1
-*/5	*	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/check-services.php >> /dev/null 2>&1
-*/10	*	*	*	*	librenms	. /etc/librenms_environment; /opt/librenms/snmp-scan.php

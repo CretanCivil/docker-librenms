@@ -10,6 +10,14 @@ if [ -z "$POLLERS" ]; then
 	POLLERS=8
 fi
 
+if [ -z "$DISCOVERYS" ]; then
+	DISCOVERYS=5
+fi
+
+
 sed -i "s/PLACEHOLDER_POLLERS/$POLLERS/g" /etc/cron.d/librenms
+
+sed -i "s/PLACEHOLDER_DISCOVERYS/$DISCOVERYS/g" /etc/cron.d/librenms
+
 
 touch "$LOCK_FILE"

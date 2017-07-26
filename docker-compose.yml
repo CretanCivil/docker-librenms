@@ -2,27 +2,37 @@ version: '2'
 
 services:
   web:
-    image: leapar/librenms:1.27
+    build: ./images/librenms
+    
+    #image: leapar/librenms:1.27
     ports:
       - "80:80"
     volumes:
-      - ./directory/logs:/opt/librenms/logs \
-      - ./directory/rrd:/opt/librenms/rrd \
+      - ./directory/logs:/opt/librenms/logs
+      - ./directory/rrd:/opt/librenms/rrd
     environment:
       - DB_HOST=db
       - DB_NAME=librenms
       - DB_USER=librenms
       - DB_PASS=wangwang
-      - POLLERS=16
+      - POLLERS=20
       - BASE_URL=http://localhost:9080
+      - TZ=Asia/shanghai
+      - DISCOVERYS=10
     links:
       - mysql:db
   mysql:
+    #build: ./images/mysql
+    user: "1000:50"
     image: mysql:5.6
-    command: --sql-mode=""
+    command: mysqld --sql-mode="" --default-time-zone="+8:00"
     ports:
       - "3306:3306"
     volumes:
-      - /directory/mysql:/var/lib/mysql
+      - ./directory/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=wangwang
+      - MYSQL_DATABASE=librenms
+      - MYSQL_USER=librenms
+      - MYSQL_PASSWORD=wangwang
+      - ./images/mysql:/etc/mysql/conf.d

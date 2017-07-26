@@ -29,9 +29,9 @@ $config['memcached']['ttl'] = 240;
 
 $config['fping'] = "/usr/bin/fping";
 $config['fping_options']['retries'] = 0;
-$config['fping_options']['timeout'] = 500;
+$config['fping_options']['timeout'] = 100;
 $config['fping_options']['count'] = 3;
-$config['fping_options']['millisec'] = 200;
+$config['fping_options']['millisec'] = 100;
 
 
 # 动态ip
@@ -48,14 +48,16 @@ $config['nets'][] = "172.29.231.0/24";
 $config['nets'][] = "172.29.228.0/24";
 $config['nets'][] = "172.29.226.0/24";
 $config['nets'][] = "172.29.201.0/24";
-
+$config['nets'][] = "172.29.230.0/24";
 
 $g_metric_data = [];
-
+$g_metric_service = [];
+$g_metric_check = [];
 
 $config['snmp']['v2c']['community']['172.29.201.1'] = 'h3c';
 $config['snmp']['v2c']['community']['172.29.226.1'] = 'Purvar123';
+$config['snmp']['v2c']['community']['172.29.230.46'] = 'Purvar123';
 
-$config['agent']['host'] = 'http://172.29.231.177:10000/snmp/v1/';
-$config['agent']['key'] = 'e7afaf986f5cc822406cbd5831328462';
-
+$config['agent']['host'] = 'http://172.29.231.177:8000/snmp/v1/';
+$config['agent']['key'] = 'd345ee0759994410b47d098230c4a188';//'8571ffe00284475cb06b17847a97b6bf';
+$config['agent_host'] = 'snmp1';

@@ -5,3 +5,11 @@ Thumbs.db
 .project
 nbproject
 !.gitignore
+
+*.frm
+
+*.ibd
+
+*.MYI
+
+*.MYD
